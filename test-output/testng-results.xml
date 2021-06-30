@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="11032" started-at="2021-06-30T13:01:26Z" finished-at="2021-06-30T13:01:37Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="11032" started-at="2021-06-30T13:01:26Z" finished-at="2021-06-30T13:01:37Z">
+      <class name="com.technocredits.orangeHRMS.testscripts.Login_Test">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.technocredits.orangeHRMS.testscripts.Login_Test@4c70fda8]" name="setUp" is-config="true" duration-ms="6642" started-at="2021-06-30T13:01:26Z" finished-at="2021-06-30T13:01:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="verifyUserlogin()[pri:0, instance:com.technocredits.orangeHRMS.testscripts.Login_Test@4c70fda8]" name="verifyUserlogin" duration-ms="4375" started-at="2021-06-30T13:01:32Z" finished-at="2021-06-30T13:01:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserlogin -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.technocredits.orangeHRMS.testscripts.Login_Test@4c70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2021-06-30T13:01:37Z" finished-at="2021-06-30T13:01:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.technocredits.orangeHRMS.testscripts.Login_Test -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
