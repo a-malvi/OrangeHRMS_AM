@@ -1,37 +1,59 @@
 package com.technocredits.orangeHRMS.testscripts;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import java.io.IOException;
+
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.technocredits.orangeHRMS.base.PredefinedMethods;
 import com.technocredits.orangeHRMS.pages.HomePage;
 import com.technocredits.orangeHRMS.pages.LoginPage;
+import com.technocredits.orangeHRMS.utils.ExcelReader_Util;
 
 
 public class Login_Test {
-	WebDriver driver;
+	//WebDriver driver;
 
-	@BeforeClass
+	@BeforeMethod
 	public void setUp() {
-		PredefinedMethods.launchBrowser("https://opensource-demo.orangehrmlive.com/");
+		PredefinedMethods.launchBrowser("https://tcohrms-trials71.orangehrmlive.com/");
 	}
-
-	@Test 
-	public void verifyUserlogin(){
+	@Test(enabled=false)
+	public void verifyUserSuccesfullLogin(){
 		LoginPage loginPage = new LoginPage();
-		HomePage homePage = loginPage.logOn("Admin", "admin123");
-		Assert.assertTrue(homePage.isMainMenuDisplayed());
-		System.out.println(homePage.getMenuList());
+		HomePage homePage = loginPage.logOn("Admin", "Admin123");
+		Assert.assertTrue(homePage.isLoginImageDisplayed());
+		Assert.assertEquals(homePage.getWidgetCount(),11);
 	}
 
-	@AfterClass
+	@Test(dataProvider= "LoginData")
+	public void verifyLogins(String userName, String password, String message) {
+		LoginPage loginPage = new LoginPage();
+		loginPage.logOn(userName, password);
+		if(message.equals("Password cannot be empty")) {
+			String actualMessage = loginPage.getErrorText("xpath", "//span[@id='spanMessage']", true);
+			Assert.assertEquals("Password cannot be empty", actualMessage);
+		}
+		else if(message.equals("Username cannot be empty")) {
+			String actualMessage = loginPage.getErrorText("xpath", "//span[@id='spanMessage']", true);
+			Assert.assertEquals("Username cannot be empty", actualMessage);
+		}
+		else {
+			Assert.assertTrue(loginPage.getPageURL().endsWith(message));	
+		}
+	}
+
+	@DataProvider(name = "LoginData")
+	public Object[][] getLoginDataFromExcel() throws IOException {
+		return ExcelReader_Util.getSheetData("Login_TestData.xlsx", "LoginData" );
+
+	}
+
+	@AfterMethod
 	public void tearDown() {
-		
+		PredefinedMethods.tearDown();
 	}
 }
