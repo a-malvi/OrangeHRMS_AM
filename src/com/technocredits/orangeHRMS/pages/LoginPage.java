@@ -6,27 +6,40 @@ import com.technocredits.orangeHRMS.base.PredefinedMethods;
 
 public class LoginPage extends PredefinedMethods {
 
+	public boolean isLogoDisplayed() {
+		return isElementDisplayed("id", "divLogo", false);
+	}
+	
 	public HomePage logOn(String userName, String password) {
 		enterUsername(userName);
-		enterpassword(password);
+		enterPassword(password);
 		clickOnLogin();
 		return new HomePage();
 	}
 
 	public LoginPage enterUsername(String userName) {
-		driver.findElement(By.xpath("//input[@id='txtUsername']")).sendKeys(userName);
+		enterText("xpath", "//input[@id='txtUsername']", false, userName);
 		return this;
 	}
-	public LoginPage enterpassword(String password) {
-		driver.findElement(By.xpath("//input[@id='txtPassword']")).sendKeys(password);
+	public LoginPage enterPassword(String password) {
+		enterText("xpath", "//input[@id='txtPassword']", false, password);
 		return this;
 	}
 	public LoginPage clickOnLogin() {
-		driver.findElement(By.xpath("//input[@id='btnLogin']")).click();
+		clickOnElement("xpath", "//input[@id='btnLogin']", true);
 		return this;
 	}
 	
-	public static void closePage() {
+	public String getErrorText(String locatorType,String locator,boolean isWaitRequired) {
+		return getElementText(locatorType, locator, isWaitRequired);
+		
+	}
+	
+	public String getPageURL() {
+		return driver.getCurrentUrl();
+	}
+	
+	public void closePage() {
 		tearDown();
 	}
 
