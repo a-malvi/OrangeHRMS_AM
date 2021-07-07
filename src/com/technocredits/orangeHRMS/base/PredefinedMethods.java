@@ -216,13 +216,10 @@ public class PredefinedMethods {
 		return textListWE;
 	}
 	
-	
-	
-	
-	
 	// Method to enter Text
 	protected void enterText(String locatorType, String locator, boolean isWaitRequired, String text) {
 		WebElement element = getElement(locatorType, locator, isWaitRequired);
+		element.clear();
 		if(element.isEnabled())
 			element.sendKeys(text);
 		else {

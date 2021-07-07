@@ -14,13 +14,10 @@ import com.technocredits.orangeHRMS.pages.LoginPage;
 import com.technocredits.orangeHRMS.utils.ExcelReader_Util;
 
 
-public class Login_Test {
+public class Login_Test extends TestBase {
 	//WebDriver driver;
 
-	@BeforeMethod
-	public void setUp() {
-		PredefinedMethods.launchBrowser("https://tcohrms-trials71.orangehrmlive.com/");
-	}
+	
 	@Test(enabled=false)
 	public void verifyUserSuccesfullLogin(){
 		LoginPage loginPage = new LoginPage();
@@ -44,6 +41,7 @@ public class Login_Test {
 		else {
 			Assert.assertTrue(loginPage.getPageURL().endsWith(message));	
 		}
+		
 	}
 
 	@DataProvider(name = "LoginData")
@@ -52,8 +50,4 @@ public class Login_Test {
 
 	}
 
-	@AfterMethod
-	public void tearDown() {
-		PredefinedMethods.tearDown();
-	}
 }
