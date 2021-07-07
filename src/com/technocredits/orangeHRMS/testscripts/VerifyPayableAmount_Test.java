@@ -13,26 +13,21 @@ import com.technocredits.orangeHRMS.pages.LoginPage;
 import com.technocredits.orangeHRMS.pages.MyInfoPage;
 import com.technocredits.orangeHRMS.pages.MyInfo_SalaryPage;
 
-public class VerifyPayableAmount_Test {
+public class VerifyPayableAmount_Test extends TestBase {
 	
-	@BeforeMethod
-	public void setUp() {
-		PredefinedMethods.launchBrowser("https://tcohrms-trials71.orangehrmlive.com/");
-	}
+	
 	@Test
 	public void verifyTotalPayableAmount() throws Exception{
 		LoginPage loginPage = new LoginPage();
 		HomePage homePage = loginPage.logOn("Admin", "Admin123");
+		
 		MyInfoPage myInfoPage = homePage.clickOnMyInfo();
 		MyInfo_SalaryPage salaryPage = myInfoPage.clickOnSalary();
 		System.out.println(salaryPage.getCTCValue());
 		//System.out.println(salaryPage.getDeductionValue());
 		//System.out.println(salaryPage.getTotalPayableValue());
-		//Assert.assertFalse(salaryPage.getTotalPayableValue() == 0);
+		Assert.assertFalse(salaryPage.getTotalPayableValue() == 0);
 	}
 
-	@AfterMethod
-	public void tearDown() {
-		PredefinedMethods.tearDown();
-	}
+	
 }

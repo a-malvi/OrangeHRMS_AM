@@ -63,4 +63,6 @@ public class HomePage extends PredefinedMethods{
 		clickOnElement("xpath", "//span[@combinedmenutitle='My Info']", true);
 		return new MyInfoPage();
 	}
+	
+	
 }
