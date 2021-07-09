@@ -42,5 +42,9 @@ public class LoginPage extends PredefinedMethods {
 	public void closePage() {
 		tearDown();
 	}
+	
+	public boolean isLoginPageLabel() {
+		return isElementDisplayed("xpath", "//div[@id='logInPanelHeading']", true);
+	}
 
 }

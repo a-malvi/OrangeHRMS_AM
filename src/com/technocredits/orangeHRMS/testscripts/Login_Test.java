@@ -30,6 +30,7 @@ public class Login_Test extends TestBase {
 	public void verifyLogins(String userName, String password, String message) {
 		LoginPage loginPage = new LoginPage();
 		loginPage.logOn(userName, password);
+		Assert.assertTrue(loginPage.isLoginPageLabel());
 		if(message.equals("Password cannot be empty")) {
 			String actualMessage = loginPage.getErrorText("xpath", "//span[@id='spanMessage']", true);
 			Assert.assertEquals("Password cannot be empty", actualMessage);
