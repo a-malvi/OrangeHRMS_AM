@@ -64,5 +64,17 @@ public class HomePage extends PredefinedMethods{
 		return new MyInfoPage();
 	}
 	
+	public HomePage takeScreenshot(String testCasename) {
+		takeScreenShot(testCasename);
+		return this;
+	}
 	
+	public HomePage dragAndDrop(String LocatorType,String targetLocator,String toLocator,boolean isWaitRequired) {
+		moveElementFromTo(LocatorType, targetLocator, toLocator, isWaitRequired);
+		return this;
+	}
+	
+	public ArrayList<String> getListOfWidgetHeading(String locatorType,String locator, boolean isWaitRequired) {
+		return getElementsText(locatorType, locator, isWaitRequired);
+	}
 }

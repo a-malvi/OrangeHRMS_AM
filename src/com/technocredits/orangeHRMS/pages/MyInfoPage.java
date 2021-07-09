@@ -15,11 +15,11 @@ public class MyInfoPage extends PredefinedMethods {
 	}
 	
 	public String getFirstName(){
-		return getElementText("xpath", "//input[@id='firstName']", true);
+		return getElementAttribute("xpath", "//input[@id='firstName']","value", true);
 	}
 	
 	public String getLastName(){
-		return getElementText("xpath", "//input[@id='lastName']", false);
+		return getElementAttribute("xpath", "//input[@id='lastName']","value", false);
 	}
 	
 	public String getMyNameOnImage() {

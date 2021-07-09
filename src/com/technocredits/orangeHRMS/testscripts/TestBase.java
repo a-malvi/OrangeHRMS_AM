@@ -5,7 +5,10 @@ import org.testng.annotations.BeforeClass;
 
 import com.technocredits.orangeHRMS.base.PredefinedMethods;
 import com.technocredits.orangeHRMS.pages.AttendencePage;
+import com.technocredits.orangeHRMS.pages.HomePage;
 import com.technocredits.orangeHRMS.pages.LeavePage;
+import com.technocredits.orangeHRMS.pages.LoginPage;
+import com.technocredits.orangeHRMS.pages.LogoutPage;
 import com.technocredits.orangeHRMS.pages.MyInfoPage;
 import com.technocredits.orangeHRMS.pages.PIMPage;
 import com.technocredits.orangeHRMS.pages.PunchInOutPage;
@@ -20,6 +23,13 @@ public class TestBase {
 	//@AfterClass
 	public void tearDown() {
 		PredefinedMethods.tearDown();
+	}
+	
+	
+	HomePage logMeIn() {
+		LoginPage loginPage = new LoginPage();
+		loginPage.logOn("Admin", "Admin123");
+		return new HomePage();
 	}
 	
 	MyInfoPage goto_MyInfo() {
@@ -38,11 +48,21 @@ public class TestBase {
 		LeavePage leavePage = new LeavePage();
 		leavePage.clickOnLeave();
 		return leavePage;
-	}	
+		
+	}
 	 AttendencePage goto_AttendencePage() {
 		 AttendencePage attendencePage = new AttendencePage();
 		 attendencePage.clickOnAttendence();
 		 return new AttendencePage();	 
 	 }
-
+	 
+	 LoginPage LogOutUser() {
+		 LogoutPage logoutPage = new LogoutPage();
+		 return logoutPage.logOut();
+	 }
+	 
+	 void navigateToUrl() {
+		 
+		 
+	 }
 }

@@ -15,7 +15,7 @@ public class VerifyMyInfoPersonalDetails_Test extends TestBase{
 		loginPage.logOn("Admin", "Admin123");
 		
 		HomePage homepage = new HomePage();
-		
+		homepage.takeScreenshot("ABC");
 		MyInfoPage myInfoPage = goto_MyInfo();
 		
 		String nameOnHomePage = myInfoPage.getMyNameOnImage();
@@ -23,6 +23,7 @@ public class VerifyMyInfoPersonalDetails_Test extends TestBase{
 		System.out.println("On Home Page "+nameOnHomePage);
 		System.out.println("On Home Page "+nameOnMyInfo);
 		Assert.assertEquals(nameOnHomePage, nameOnMyInfo);
+		
 	}
 
 }

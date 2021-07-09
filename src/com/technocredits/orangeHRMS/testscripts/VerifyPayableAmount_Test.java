@@ -27,7 +27,5 @@ public class VerifyPayableAmount_Test extends TestBase {
 		//System.out.println(salaryPage.getDeductionValue());
 		//System.out.println(salaryPage.getTotalPayableValue());
 		Assert.assertFalse(salaryPage.getTotalPayableValue() == 0);
-	}
-
-	
+	}	
 }
